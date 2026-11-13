@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUALERT · Monitoramento Hídrico Inteligente</title>
+    <meta name="description" content="AQUALERT — Plataforma inteligente de monitoramento da qualidade da água e saneamento ambiental. Hackaton Rede de Inovação 2026." />
+    <meta name="theme-color" content="#1F3A6D" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231F3A6D'/%3E%3Cpath d='M32 10C32 10 18 28 18 39a14 14 0 0 0 28 0C46 28 32 10 32 10Z' fill='%23FFFFFF'/%3E%3Cpath d='M23 41q4.5-4 9 0t9 0' stroke='%234BAAB0' stroke-width='3.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy:   { DEFAULT: '#1F3A6D', deep: '#132342', soft: '#2D4E8E', light: '#EEF2F9' },
+              tang:   { DEFAULT: '#EE7A3B', dark: '#CF5C1F', soft: '#FDF0E8' },
+              sun:    { DEFAULT: '#F8C14A', dark: '#DDA01B', soft: '#FEF9ED' },
+              leaf:   { DEFAULT: '#5C9234', dark: '#487528', soft: '#F1F7EC' },
+              lagoon: { DEFAULT: '#4BAAB0', dark: '#37878D', soft: '#EBF6F7' },
+              ink:    { DEFAULT: '#1E293B', soft: '#64748B', light: '#94A3B8' },
+              surface: { DEFAULT: '#F8FAFC', card: '#FFFFFF', sub: '#F1F5F9' },
+            },
+            fontFamily: {
+              display: ['Grandstander', 'cursive'],
+              sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --navy: #1F3A6D;
+      }
+
+      html { 
+        accent-color: var(--navy); 
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        background-color: #F8FAFC;
+        color: #1E293B;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .clean-card {
+        background-color: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      }
+
+      /* Micro-animations */
+      @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+      @keyframes pop { 0% { transform: scale(.95); } 100% { transform: scale(1); } }
+      .rise { animation: rise .45s cubic-bezier(.16, 1, .3, 1) backwards; }
+      .floaty { animation: floaty 5s ease-in-out infinite; }
+      .pop { animation: pop .25s ease-out; }
+      @media (prefers-reduced-motion: reduce) {
+        .rise, .floaty, .pop { animation: none !important; }
+      }
+
+      /* Form feedback */
+      .field:focus { outline: none; border-color: #1F3A6D; box-shadow: 0 0 0 3px rgba(31, 58, 109, 0.12); }
+      .field:user-invalid { border-color: #EE7A3B; box-shadow: 0 0 0 3px rgba(238, 122, 59, 0.15); }
+
+      /* Modern Clean Scrollbar */
+      * { scrollbar-width: thin; scrollbar-color: #CBD5E1 transparent; }
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+      .leaflet-container { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-50 text-slate-800">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
